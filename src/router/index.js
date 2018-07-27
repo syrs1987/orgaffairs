@@ -23,6 +23,9 @@ import order from '@/module-my/order'
 import head from '@/components/header/head'
 import ordertypeselect from '@/module-my/ordertypeselect'
 
+import imageHtml5 from '@/components/image-html5-upload'
+import baiduMap from '@/components/baidumap'
+
 Vue.use(Router)
 
 // 注册路由
@@ -147,7 +150,23 @@ const router = new Router({
       meta: {
         title: '选择业务类型'
       }
+    },{
+      path: '/imageHtml5',
+      name: 'image-html5-upload',
+      component: imageHtml5,
+      meta: {
+        title: '选择业务类型'
+      }
+    },
+    {
+      path: '/baiduMap',
+      name: 'baiduMap',
+      component: baiduMap,
+      meta: {
+        title: '地图'
+      }
     }
+
   ]
 })
 

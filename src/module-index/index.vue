@@ -1,5 +1,6 @@
 <template>
   <div class="learingIndex">
+    <headTop></headTop>
     <mt-tab-container v-model="selected" swipeable="swipeable">
       <mt-tab-container-item id="index">
         <LearingHeader></LearingHeader>
@@ -49,6 +50,7 @@
   import learingFooter from './../components/footer.vue'
   import IndexApi from '../api/learingInd.js'
   import cfg from './../utils/config'
+  import headTop from '../components/header/head'
 
   export default {
     name: 'learingIndex',
@@ -108,7 +110,8 @@
       listModular,
       courseModular,
       myModular,
-      learingFooter
+      learingFooter,
+      headTop
     },
 
   }
