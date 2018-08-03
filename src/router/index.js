@@ -18,19 +18,26 @@ import personalData from '@/module-my/personalData'
 import myOrder from '@/module-my/myOrder'
 import login from '@/module-my/login'
 import register from '@/module-my/register'
-import cityhome from '@/city/home'
 import order from '@/module-my/order'
-import head from '@/components/header/head'
 import ordertypeselect from '@/module-my/ordertypeselect'
 
 import imageHtml5 from '@/components/image-html5-upload'
-import baiduMap from '@/components/baidumap'
-
+import baiduMap from '@/module-list/bmap'
+import lineup from '@/module-course/lineup'
+import city from '@/components/city'
 Vue.use(Router)
 
 // 注册路由
 const router = new Router({
   routes: [
+    {
+      path: '/city',                   // 城市
+      name: 'city',
+      component: city,
+      meta: {
+        title: '城市'
+      }
+    },
     {
       path: '/',                   // 首页
       name: 'learingIndex',
@@ -115,18 +122,13 @@ const router = new Router({
       name: 'register',
       component: register,
       meta: {
-        title: '登录'
+        title: '注册'
       }
     },
     {
       path: '/myOrder',            // 我的订单
       name: 'myOrder',
       component: myOrder
-    },
-    {
-      path: '/city/home',            // 我的订单
-      name: 'cityhome',
-      component: cityhome
     },
     {
       path: '/order',
@@ -137,20 +139,6 @@ const router = new Router({
       }
     },
     {
-      path: '/head',
-      name: 'head',
-      component: head,
-      meta: {
-        title: '头部'
-      }
-    }, {
-      path: '/ordertypeselect',
-      name: 'ordertypeselect',
-      component: head,
-      meta: {
-        title: '选择业务类型'
-      }
-    },{
       path: '/imageHtml5',
       name: 'image-html5-upload',
       component: imageHtml5,
@@ -165,8 +153,15 @@ const router = new Router({
       meta: {
         title: '地图'
       }
+    },
+    {
+      path: '/lineup',
+      name: 'lineup',
+      component: lineup,
+      meta: {
+        title: '排队'
+      }
     }
-
   ]
 })
 

@@ -1,16 +1,16 @@
 <template>
-  <div class="indexHeader">
-    <div class="search" @click="goSeach" ><i class="icon-search" ></i> <input type="text" @blur="" @focus="" :style="{width: seachWt}" v-model="searchName" placeholder="办事在线"></div>
-    <mt-swipe :auto="3000">
-      <mt-swipe-item v-for="(item, index) in bannerDat" :key="index"><img :src="imgBaseUrl + item.image_url" width="100%" alt=""></mt-swipe-item>
-    </mt-swipe>
-  </div>
+    <div class="indexHeader">
+      <div class="search" @click="goSeach" ><i class="icon-search" ></i> <input type="text" @blur="" @focus="" :style="{width: seachWt}" v-model="searchName" placeholder="办事在线"></div>
+      <mt-swipe :auto="3000">
+        <mt-swipe-item v-for="(item, index) in bannerDat" :key="index"><img :src="imgBaseUrl + item.image_url" width="100%" alt=""></mt-swipe-item>
+      </mt-swipe>
+    </div>
 </template>
 
 <script>
   import IndexApi from '../api/learingInd.js'
   import cfg from './../utils/config'
-
+  import { Header } from 'mint-ui'
   export default {
     name: 'indexHeader',
     data () {
@@ -49,12 +49,33 @@
     },
     mounted:function(){
       this.init()
+    },
+    components:{
+      Header
     }
   }
 </script>
-
 <style lang="scss">
   @import "../assets/baseScss";
+  .spMap{
+    font-size: 16px;
+    color: white;
+  }
+  .chouse{
+    font-color:#eee;
+  }
+  .addrspan{
+    font-size: 15px;
+    margin-left: 6px;
+  }
+  .sddrimg{
+    width: 17px;
+    height: 17px;
+  }
+  .login_link
+  {
+    color: #fff;
+  }
   .indexHeader{
     height: 200px;
     position: relative;

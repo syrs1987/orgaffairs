@@ -2,15 +2,14 @@
   <div class="classItem">
     <div class="title" v-show="title"><i class="icon-logo"></i>{{title}} <a href="#/list/all" class="labs" v-show="labs">查看全部</a></div>
     <div class="content"  >
-      <div v-if="isLoadMores"  v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="5">
+      <div v-if="isLoadMores"  v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="20">
         <a v-for="(item, index) in dataes" :key="item.id" :href="'#/detail/'+ item.id">
         <div class="item">
-          <div class="iconInfo"><img src="./../assets/cs1.png" alt=""></div>
+          <div class="iconInfo"><img :src="imgBaseUrl + item.cover_img" alt=""></div>
           <div class="info">
-            <div class="tit">{{item.name}}</div><br/>
-            <div class="des">地址:{{item.addr}}</div>
-            <div class="des">预约时间:{{item.ytime}}</div>
-            <div class="des">公共交通:{{item.traffic}}</div>
+            <div class="tit">{{item.name}}</div>
+            <div class="des">{{item.desc}}</div>
+            <div class="rank"><em v-if="item.level == 3">高级</em><em v-else-if="item.level == 2">中级</em><em v-if="item.level == 1">初级</em><i>●</i> {{item.view_count}}人在学习</div>
           </div>
         </div>
         </a>
@@ -20,12 +19,11 @@
       <div v-else>
         <a v-for="(item, index) in dataes" :key="index" :href="'#/detail/'+ item.id">
           <div class="item">
-            <div class="iconInfo"><img  src="../assets/cs1.png" alt=""></div>
+            <div class="iconInfo"><img :src="imgBaseUrl + item.cover_img" alt=""></div>
             <div class="info">
               <div class="tit">{{item.name}}</div>
-              <div class="des">地址:{{item.addr}}</div>
-              <div class="des">预约时间:{{item.ytime}}</div>
-              <div class="des">公共交通:{{item.traffic}}</div>
+              <div class="des">{{item.desc}}</div>
+              <div class="rank"><em v-if="item.level == 3">高级</em><em v-else-if="item.level == 2">中级</em><em v-if="item.level == 1">初级</em><i>●</i> {{item.view_count}}人在学习</div>
             </div>
           </div>
         </a>
@@ -83,10 +81,8 @@
         .iconInfo{flex:2;margin-right: 5px;}
         .info{
           flex:3;
-          .tit{font-size: 18px; color:$cl2;height: 25px;  font-weight:bolder;overflow: hidden;
-          display: -webkit-box;-webkit-box-orient: vertical;
-          }
-          .des{font-size: 16px; color:$cl6;height: 20px;overflow: hidden; margin: 5px 0;}
+          .tit{font-size: 16px; color:$cl3;height: 20px;overflow: hidden}
+          .des{font-size: 12px; color:$cl6;height: 40px;line-height:20px; overflow: hidden; margin: 5px 0;}
           .rank{
             font-size: 14px; color:$cl6; height: 20px;overflow: hidden;
             i{color:$cl9;}

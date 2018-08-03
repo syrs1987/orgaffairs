@@ -22,7 +22,6 @@
 <script>
   import logApi from '../api/users'
   import { MessageBox } from 'mint-ui'
-  import citylist from './../components/cityList.vue'
 
   export default {
     name: 'login',
@@ -69,7 +68,7 @@
     mounted:function(){
     },
     components: {
-      citylist
+
     }
   }
 </script>

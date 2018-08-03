@@ -6,10 +6,10 @@
         <span class="icon-go"></span>
         <i slot="icon" class="icon icon-my"></i>
       </mt-cell>
-      <mt-cell title="我的订单" to="/myOrder">
-        <span class="icon-go"></span>
-        <i slot="icon" class="icon icon-order"></i>
-      </mt-cell>
+      <!--<mt-cell title="我的订单" to="/myOrder">-->
+        <!--<span class="icon-go"></span>-->
+        <!--<i slot="icon" class="icon icon-order"></i>-->
+      <!--</mt-cell>-->
       <!--<mt-cell title="我的消息">-->
         <!--<span class="icon-go"></span>-->
         <!--<i slot="icon" class="icon icon-mess"></i>-->
@@ -34,7 +34,6 @@
 </template>
 <script>
   import logApi from '../api/users'
-
   export default {
     name: 'learingMy',
     data () {

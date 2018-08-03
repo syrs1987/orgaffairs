@@ -1,110 +1,52 @@
 <template>
-  <div class="learingCourse">
-    <div @click="goSeach"><mt-search v-model="searchValue"></mt-search></div>
-    <div class="courseItem" >
-      <div class="item" v-for="(item, index) in MyCoursesData" :key="index">
-        <div class="ico"><img :src="imgBaseUrl + item.cover_img" alt=""></div>
-        <div class="info">
-          <p class="tit">{{item.name}}</p>
-          <p class="speed">
-            <mt-progress :value="item.done_percentage" :barHeight="10">
-              <div slot="end"> 进度{{item.done_percentage}}%</div>
-            </mt-progress>
-            <router-link :to="'/play/'+item.id"><i class="icon-play"></i>开始学习</router-link>
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--<learingFooter></learingFooter>-->
+  <div class="page-navbar">
+    <!-- navbar -->
+    <mt-navbar class="page-part" v-model="selected">
+      <mt-tab-item id="all">全部</mt-tab-item>
+      <mt-tab-item id="no">未办理</mt-tab-item>
+      <mt-tab-item id="yes">已办理</mt-tab-item>
+    </mt-navbar>
+    <!-- tabcontainer -->
+    <mt-tab-container v-model="selected">
+      <mt-tab-container-item id="all">
+        <msgItem :orderData="allData"></msgItem>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="no">
+        <msgItem :orderData="noData"></msgItem>
+      </mt-tab-container-item>
+      <mt-tab-container-item id="yes">
+        <msgItem :orderData="yesData"></msgItem>
+      </mt-tab-container-item>
+    </mt-tab-container>
+    <msgItem></msgItem>
   </div>
 </template>
 <script>
-  import learingFooter from './../components/footer.vue'
-  import IndexApi from '../api/learingInd.js'
-  import cfg from './../utils/config'
-
+import msgItem from './../components/msg-Item'
   export default {
-    name: 'learingCourse',
-    data () {
+    name: 'page-navbar',
+    data() {
       return {
-        imgBaseUrl:cfg.imgBaseUrl,
-        searchValue: '',
-        MyCoursesData:''
+        selected: 'all',
+        allData: [{"id": 1, "status": "未办理", "name": "中铭慧业软件技术有限公司无锡分公司1123","addr":"无锡市扬名街道南湖大道855号1901室","ytime":"2018年08月01日 14:00—16:00","orderW":"综合服务"},
+          {"id": 3, "status": "已办理", "name": "中铭慧业软件技术有限公司","addr":"无锡市扬名街道南湖大道855号1901室","ytime":"2018年08月01日 14:00—16:00","orderW":"综合服务"}
+        ],
+        noData: [{"id": 1, "status": "未办理", "name": "中铭慧业软件技术有限公司无锡分公司1123","addr":"无锡市扬名街道南湖大道855号1901室","ytime":"2018年08月01日 14:00—16:00","orderW":"综合服务"}
+        ],
+        yesData: [{"id": 3, "status": "已办理", "name": "中铭慧业软件技术有限公司","addr":"无锡市扬名街道南湖大道855号1901室","ytime":"2018年08月01日 14:00—16:00","orderW":"综合服务"}
+        ]
       }
     },
     methods:{
-      init: function() {
-        this.getMyCourses()
-      },
-      // 搜索
-      goSeach: function() {
-        this.$router.push({path:'/search/'})
-      },
-      getMyCourses: function(){
-        IndexApi.myCourses((ret, err) => {
-          if (err) {
-            console.log(err)
-          }else{
-            console.log(ret.data)
-            this.MyCoursesData = ret.data
-          }
-        })
-      }
     },
-    mounted:function(){
-      this.init()
-    },
-    components: {
-      learingFooter
+    components:{
+      msgItem
     }
   }
 </script>
 
 <style lang="scss">
-  @import "../assets/baseScss";
-  .learingCourse{
-    .courseItem{
-      .item{
-        display: flex;
-        padding: 15px 15px 0px;
-
-        .ico{
-          flex:1;
-          margin-right: 10px;
-        }
-        .info{
-          flex: 2;
-          position: relative;
-          .tit{
-            text-align: left;
-            height: 40px;
-            line-height: 40px;
-            overflow: hidden;
-          }
-          .speed{
-            display: flex;
-            font-size: 14px;
-            line-height: 30px;
-            margin-top: 5px;
-            width: 100%;
-            a{
-              flex: 2;
-              color:$cl0;
-              text-align: right;
-              font-weight: 500;
-              i:before{
-                position: relative;
-                top:1px;
-              }
-            }
-            .mt-progress{
-              flex:3;
-              color:$cl9;
-            }
-          }
-
-        }
-      }
-    }
-  }
+.page-part{
+  font-size: 15px;
+}
 </style>

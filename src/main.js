@@ -8,7 +8,9 @@ import router from './router'
 import './assets/base.css'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import iview from 'iview'
 
+Vue.use(iview)
 Vue.use(MintUI)
 Vue.config.productionTip = false
 
