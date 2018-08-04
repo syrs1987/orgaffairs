@@ -62,7 +62,10 @@ const router = new Router({
     {
       path: '/list',                   // 分类
       name: 'listIndex',
-      component: learingIndex
+      component: learingIndex,
+      meta: {
+        title: '分类'
+      }
     },
     {
       path: '/my',                      // 我的

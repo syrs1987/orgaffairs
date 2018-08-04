@@ -53,7 +53,7 @@
   import httpCt from '../api/httpClient'
   import LearingHeader from './../components/index-header.vue'
   import ClassItem from './../components/class-Item.vue'
-  import listModular from './../module-list/index.vue'
+  import listModular from '../module-list/index.vue'
   import courseModular from './../module-course/index.vue'
   import myModular from './../module-my/index.vue'
   import learingFooter from './../components/footer.vue'

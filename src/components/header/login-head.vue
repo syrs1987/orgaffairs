@@ -15,8 +15,8 @@
       position="right"
       modal=false>
       <mt-index-list :show-indicator="false">
-        <mt-index-section v-for="Zm in cityZm" :index="Zm">
-          <mt-button  v-for="item in cityList[Zm]" :title="item.name" @click="setcity(item.name)">{{item.name}}</mt-button>
+        <mt-index-section v-for="(Zm,index) in cityZm" :index="Zm" :key="index" >
+          <mt-button  v-for="(item,index) in cityList[Zm]" :key="index" :title="item.name" @click="setcity(item.name)">{{item.name}}</mt-button>
         </mt-index-section>
       </mt-index-list>
     </mt-popup>

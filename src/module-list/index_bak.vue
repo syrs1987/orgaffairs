@@ -3,11 +3,11 @@
     <div @click="goSeach"><mt-search v-model="searchValue"></mt-search></div>
     <div class="listBox">
       <mt-navbar v-model="selected">
-        <mt-tab-item v-for="(item, index) in listItemData" :key="index" :id="index" on-click="selected()">{{item.name}}</mt-tab-item>
+        <mt-tab-item v-for="(item, index) in listItemData" :key="index_bak" :id="index_bak" on-click="selected()">{{item.name}}</mt-tab-item>
       </mt-navbar>
       <!-- tab-container -->
       <mt-tab-container v-model="selected" >
-        <mt-tab-container-item v-for="(item, index) in listItemData" :key="index" :id="index">
+        <mt-tab-container-item v-for="(item, index) in listItemData" :key="index_bak" :id="index_bak">
           <div class="banner" v-if="listInfoData.carousel_imgs"><img :src="imgBaseUrl + listInfoData.carousel_imgs['1']" alt=""></div>
           <div class="labs">
             <router-link v-for="(it, ind) in listInfoData.parent" :key="ind"  :to="'/list/all/' + it.id">{{it.name}}</router-link>
